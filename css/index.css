@@ -1,0 +1,158 @@
+@font-face { font-family: "Ionicons"; src: url("fonts/ionicons.eot?v=2.0.0"); src: url("fonts/ionicons.eot?v=2.0.0#iefix") format("embedded-opentype"), url("fonts/ionicons.ttf?v=2.0.0") format("truetype"), url("fonts/ionicons.woff?v=2.0.0") format("woff"), url("fonts/ionicons.svg?v=2.0.0#Ionicons") format("svg"); font-weight: normal; font-style: normal; }
+
+.game-container{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+
+
+/*New Game Screen*/
+
+
+.game-container--new{
+  background: #3D95A9;
+  color: #F5F5F5;
+}
+
+.new-game-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+    .new-game__header{
+      font-size: 80px;
+    }
+
+    .new-game__sub-header{
+      font-size: 30px;
+      padding: 0.5em;
+    }
+
+.game-link{
+  font-size: 20px;
+  box-sizing: border-box;
+  display: block;
+  padding: 10px 20px;
+  border: 6px solid;
+  border-color: #F5F5F5;
+  width: 200px;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+/*Game Screen*/
+
+
+.game-container--game{
+  color: #F5F5F5;
+  background: #6A91AB;
+  padding-top: 2em;
+  overflow: auto;
+}
+
+.game-header{
+  display: block;
+  width: 300px;
+  font-size: 60px;
+  color: white;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.game-counter{
+  font-size: 20px;
+  position: absolute;
+  display: block;
+  width: 100%;
+}
+
+    .game-counter__lives{
+      color: #D55C3D;
+      float:left;
+      padding: 5px;
+    }
+
+    .game-counter__timer{
+      float: right;
+      padding: 5px;
+    }
+
+.game-board{
+  display: block;
+  padding: 2em;
+  color: white;
+  text-align: center;
+  overflow: auto;
+}
+
+.game-tile{
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  float: left;
+}
+
+    .game-tile--easy{
+      width: 16.666%;
+      padding-bottom: 16.666%;
+    }
+
+    .game-tile--hard{
+      width: 12.5%;
+      padding-bottom: 12.5%;
+    }
+
+    .game-tile__check{
+      height: 0;
+      width: 0;
+      visibility: hidden;
+    }
+
+    .game-tile__card{
+      background: #C3D7DF;
+      display: block;
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      bottom: 1px;
+      left: 1px;
+      border-radius: 10px;
+    }
+
+    .game-tile__icon{
+      font-size: 28px;
+      visibility: hidden;
+      position:absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+input:checked + .game-tile__card .game-tile__icon{
+  visibility: visible;
+}
+
+
+
+/*Win Screen*/
+
+
+
+/*Lose Screen*/

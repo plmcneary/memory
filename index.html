@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Memory</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/ionicons.css">
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+
+    <!--View-->
+
+    <main class="game-container">
+    </main>
+
+
+
+
+
+      <!--404-->
+
+      <script id="*404" type="text/html">
+
+        <h1 class="404__header">404 not found</h1>
+        <a href="#memory" class="404">New Game</a>
+
+      </script>
+
+
+
+
+
+      <!--New Game-->
+
+      <script id="js-new" type="text/html">
+
+        <div class="new-game-content">
+          <h1 class="new-game__header">Mem<span class= "ion-ios-lightbulb"></span>ry</h1>
+          <h2 class="new-game__sub-header">NEW GAME</h2>
+          <a href="#memory/easy" class="game-link  game-link--easy">Easy</a>
+          <a href="#memory/hard" class="game-link  game-link--hard">Hard</a>
+        </div>
+
+      </script>
+
+
+
+
+
+      <!--Game-->
+
+      <script id="js-game" type="text/html">
+
+          <h1 class="game-header">Mem<span class="ion-ios-lightbulb"></span>ry</h1>
+
+          <div class="game-counter">
+            <span class="game-counter__lives">
+              <% for(var heart in lives) { %>
+              <span class="<%= lives[heart] %>"></span>
+              <% } %>
+              </span>
+            <span class="game-counter__timer">0:02:10</span>
+          </div>
+
+          <div class="game-board">
+            <% for(var icon in array) { %>
+            <label class="game-tile">
+              <input type="checkbox" class="game-tile__check">
+              <span class="game-tile__card"><span class="game-tile__icon <%= array[icon] %>"></span></span>
+            </label>
+            <% } %>
+          </div>
+
+      </script>
+
+
+
+
+
+      <!--Win-->
+
+      <script id="js-win" type="text/html">
+
+        <div class="win-content">
+          <h1 class="win-content__header">Hooray!</h1>
+          <h2 class="win-content__sub-header">You won!</h2>
+          <a href="#memory" class="new-game-link"></a>
+        </div>
+
+      </script>
+
+
+
+
+
+      <!--Lose-->
+
+      <script id="js-lose" type="text/html">
+
+        <div class="lose-content">
+          <h1 class="lose-content__header">Whoops!</h1>
+          <h2 class="lose-content__sub-header">(You lost.)</h2>
+          <a href="#memory" class="new-game-link">New Game</a>
+        </div>
+
+      </script>
+
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/underscore/underscore-min.js"></script>
+  <script src="bower_components/backbone/backbone-min.js"></script>
+
+  <script src="js/memory.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/show.js"></script>
+  <script src="js/new_game_controller.js"></script>
+  <script src="js/game_controller.js"></script>
+  <script src="js/init.js"></script>
+  </body>
+</html>

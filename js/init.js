@@ -1,0 +1,5 @@
+$(function () {
+
+  Backbone.history.start();
+  
+});
