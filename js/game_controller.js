@@ -62,7 +62,7 @@ memory.router.route('memory/:difficulty', function(difficulty) {
 
   var shown = [];
 
-  $(".game-tile__check").on("click", function() {
+  $(".game-tile__card").on("click", function() {
 
 //Add Icon to Shown if Checking
 
