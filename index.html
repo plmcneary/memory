@@ -5,7 +5,10 @@
     <title>Memory</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/ionicons.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/animations.scss">
+    <link rel="stylesheet" href="css/index.scss">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:800' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="./bulb_off.png">
   </head>
   <body>
 
@@ -85,7 +88,7 @@
         <div class="win-content">
           <h1 class="win-content__header">Hooray!</h1>
           <h2 class="win-content__sub-header">You won!</h2>
-          <a href="#memory" class="new-game-link"></a>
+          <a href="#memory" class="new-game-link--win">New Game</a>
         </div>
 
       </script>
@@ -99,9 +102,13 @@
       <script id="js-lose" type="text/html">
 
         <div class="lose-content">
-          <h1 class="lose-content__header">Whoops!</h1>
-          <h2 class="lose-content__sub-header">(You lost.)</h2>
-          <a href="#memory" class="new-game-link">New Game</a>
+          <div class="lose-message">
+            <h1 class="lose-message__header">YOU</h1>
+            <p class="lose-message__p">are a</p>
+            <h1 class="lose-message__header">B.T.L.</h1>
+            <h2 class="lose-content__sub-header">(Big Time Loser)</h2>
+          </div>
+          <a href="#memory" class="new-game-link--lose">New Game</a>
         </div>
 
       </script>
@@ -116,6 +123,8 @@
   <script src="js/show.js"></script>
   <script src="js/new_game_controller.js"></script>
   <script src="js/game_controller.js"></script>
+  <script src="js/win_controller.js"></script>
+  <script src="js/lose_controller.js"></script>
   <script src="js/init.js"></script>
   </body>
 </html>
