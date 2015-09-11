@@ -137,12 +137,12 @@ body {
   float: left;
 }
 
-.game-tile.flip {
+.game-tile__card.flip {
   -webkit-animation: flip-in-animation 0.2s linear;
   animation: flip-in-animation 0.2s linear;
 }
 
-.game-tile.flipback {
+.game-tile__card.flipback {
   -webkit-animation: flip-out-animation 0.2s linear;
   animation: flip-out-animation 0.2s linear;
 }
@@ -182,10 +182,6 @@ body {
       left: 50%;
       transform: translate(-50%, -50%);
     }
-
-.visible {
-  visibility: visible;
-}
 
 
 

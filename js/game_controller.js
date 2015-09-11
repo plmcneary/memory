@@ -69,8 +69,10 @@ memory.router.route('memory/:difficulty', function(difficulty) {
   }
 
   function rememberMove(tile) {
-    $(tile).removeClass('flipback').addClass('flip');
-    $(tile).find('.game-tile__icon').addClass('visible');
+    $(tile).find('.game-tile__card').removeClass('flipback').addClass('flip');
+    setTimeout(function() {
+      $(tile).find('.game-tile__icon').css('visibility', 'visible');
+    }, 150);
 
     shown.push(tile);
   }
@@ -104,8 +106,10 @@ memory.router.route('memory/:difficulty', function(difficulty) {
 
     setTimeout(function () {
       $(a).add(b).find('input').prop('checked', false);
-      $(a).add(b).find('.game-tile__icon').removeClass('visible');
-      $(a).add(b).removeClass('flip').addClass('flipback');
+      setTimeout(function () {
+        $(a).add(b).find('.game-tile__icon').css('visibility', 'hidden');
+      }, 50);
+      $(a).add(b).find('.game-tile__card').removeClass('flip').addClass('flipback');
     }, 1000);
 
     shown.shift();
