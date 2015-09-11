@@ -1,0 +1,44 @@
+/*Animations*/
+
+/*Float*/
+
+@keyframes floating-middle-new {
+  0%,100% {
+    transform: rotate(-0.5deg) translate(-50%, -51%);
+  }
+  60% {
+    transform: rotate(0.5deg) translate(-50%, -49%);
+  }
+}
+
+@keyframes floating-middle-lose {
+  0%,100% {
+    transform: rotate(-2deg) translate(-50%, -51%);
+  }
+  60% {
+    transform: rotate(4deg) translate(-50%, -49%);
+  }
+}
+
+
+/*Flip*/
+
+@keyframes flip-in-animation {
+  0% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 0deg);
+  }
+
+  100% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+  }
+}
+
+@keyframes flip-out-animation {
+  0% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 0deg);
+  }
+
+  100% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+  }
+}

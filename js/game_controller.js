@@ -2,11 +2,11 @@ memory.router.route('memory/:difficulty', function(difficulty) {
 
   $(".game-container").removeClass("game-container--new game-container--win game-container--lose").addClass("game-container--game");
 
-  var easyArrHalf = ["ion-hammer", "ion-heart-broken", "ion-bonfire", "ion-bowtie", "ion-beer", "ion-ios-infinite", "ion-woman", "ion-waterdrop", "ion-ios-thunderstorm"];
+  var easyArrHalf = ["ion-hammer", "ion-heart-broken", "ion-bonfire", "ion-bowtie", "ion-beer", "ion-gear-b", "ion-laptop", "ion-waterdrop", "ion-beaker"];
   var easyArr = easyArrHalf.concat(easyArrHalf);
-  var hardArrHalf = easyArrHalf.concat(["ion-paper-airplane", "ion-music-note", "ion-ios-wineglass", "ion-ios-rose", "ion-ios-rainy", "ion-ios-pie", "ion-ios-folder"]);
+  var hardArrHalf = easyArrHalf.concat(["ion-paper-airplane", "ion-music-note", "ion-pizza", "ion-wrench", "ion-leaf", "ion-power", "ion-thumbsup"]);
   var hardArr = hardArrHalf.concat(hardArrHalf);
-  var hearts=[];
+  var hearts = [];
 
   //Shuffle Function
 
@@ -50,7 +50,7 @@ memory.router.route('memory/:difficulty', function(difficulty) {
   if(difficulty === "hard") {
     var numTiles = hardArr.length;
     var shuffledHard = shuffle(hardArr);
-    var numLives = 20;
+    var numLives = 16;
     for(i = 0; i<numLives; ++i){
       hearts.push("ion-heart-broken");
     }
@@ -64,8 +64,39 @@ memory.router.route('memory/:difficulty', function(difficulty) {
 
   var shown = [];
 
-  function flipBack() {
+  function isValidMove(tile) {
+    if(shown.length === 2) {
+      return false;
+    } else {
+      return !$(tile).find('input').prop('checked');
+    }
+  }
+
+  function rememberMove(tile) {
+    shown.push(tile);
+  }
+
+  function tilesAreEqual(a, b) {
+    return a.find('.game-tile__icon').attr('class') === b.find('.game-tile__icon').attr('class');
+  }
+
+  function markTilesAsGood(a, b) {
+    $(a).add(b).addClass('good');
+
+    if ($('.good').length === numTiles) {
+      memory.winTime = $('.game-counter__timer').text();
+      location.hash = '#memory/win';
+    };
+
+    shown = [];
+  }
+
+  function flipBack(a, b) {
     $(".game-counter__lives").find(".ion-heart-broken").last().remove();
+
+    $(a).add(b).removeClass('flip').addClass('flipback');
+
+    ++ memory.errors;
 
     if($(".game-counter__lives").children().length === 0) {
       location.hash = '#memory/lose';
@@ -73,27 +104,8 @@ memory.router.route('memory/:difficulty', function(difficulty) {
 
     setTimeout(function () {
       $('.game-tile:not(.good)').find('input').prop('checked', false);
+      shown = [];
     }, 500);
-  }
-
-  function isValidMove(tile) {
-    return !$(tile).find('input').prop('checked');
-  }
-
-  function rememberMove(tile) {
-    shown.push(tile);
-  }
-
-  function markTilesAsGood(a, b) {
-    $(a).add(b).addClass('good');
-
-    if ($('.good').length === numTiles) {
-      location.hash = '#memory/win';
-    };
-  }
-
-  function tilesAreEqual(a, b) {
-    return a.find('.game-tile__icon').attr('class') === b.find('.game-tile__icon').attr('class');
   }
 
   // if not is valid move, stop event and exit
@@ -110,16 +122,20 @@ memory.router.route('memory/:difficulty', function(difficulty) {
       return false;
     }
 
+    $(gameTile).removeClass('flipback').addClass('flip');
+
+    setTimeout(function() {
+      $(gameTile).find('.game-tile__icon').addClass('visible');
+    }, 250);
+
     rememberMove(gameTile);
 
     if (shown.length === 2) {
       if (tilesAreEqual(shown[0], shown[1])) {
         markTilesAsGood(shown[0], shown[1]);
       } else {
-        flipBack();
+        flipBack(shown[0], shown[1]);
       }
-
-      shown = [];
     }
 
   });

@@ -5,8 +5,8 @@
     <title>Memory</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/ionicons.css">
-    <link rel="stylesheet" href="css/animations.scss">
-    <link rel="stylesheet" href="css/index.scss">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/index.css">
     <link href='https://fonts.googleapis.com/css?family=Raleway:800' rel='stylesheet' type='text/css'>
     <link rel="icon" type="image/png" href="./bulb_off.png">
   </head>
@@ -86,8 +86,12 @@
       <script id="js-win" type="text/html">
 
         <div class="win-content">
-          <h1 class="win-content__header">Hooray!</h1>
-          <h2 class="win-content__sub-header">You won!</h2>
+          <div class="win-message">
+            <h1 class="win-message__header">Hooray!</h1>
+            <h2 class="win-message__sub-header">You won!</h2>
+            <p class="win-message__ stat">Time: <span class="win-time"></span></p>
+            <p class="win-message__ stat">Errors: <span class="errors"></span></p>
+          </div>
           <a href="#memory" class="new-game-link--win">New Game</a>
         </div>
 
@@ -106,9 +110,13 @@
             <h1 class="lose-message__header">YOU</h1>
             <p class="lose-message__p">are a</p>
             <h1 class="lose-message__header">B.T.L.</h1>
-            <h2 class="lose-content__sub-header">(Big Time Loser)</h2>
           </div>
-          <a href="#memory" class="new-game-link--lose">New Game</a>
+          <div class="BTL">
+            <h2 class="lose-message__sub-header">(Big Time Loser)</h2>
+          </div>
+          <div class="new-game-link-container">
+            <a href="#memory" class="new-game-link--lose">New Game</a>
+          </div>
         </div>
 
       </script>
