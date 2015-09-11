@@ -35,7 +35,7 @@ memory.router.route('memory/:difficulty', function(difficulty) {
     var shuffledEasy = shuffle(easyArr);
     var numLives = 10;
     for(i = 0; i<numLives; ++i){
-      hearts.push("ion-heart-broken");
+      hearts.push("ion-heart");
     }
     var easyModel = {
       array: shuffledEasy,
@@ -52,7 +52,7 @@ memory.router.route('memory/:difficulty', function(difficulty) {
     var shuffledHard = shuffle(hardArr);
     var numLives = 16;
     for(i = 0; i<numLives; ++i){
-      hearts.push("ion-heart-broken");
+      hearts.push("ion-heart");
     }
     var hardModel = {
       array: shuffledHard,
@@ -65,14 +65,13 @@ memory.router.route('memory/:difficulty', function(difficulty) {
   var shown = [];
 
   function isValidMove(tile) {
-    if(shown.length === 2) {
-      return false;
-    } else {
-      return !$(tile).find('input').prop('checked');
-    }
+    return !$(tile).find('input').prop('checked');
   }
 
   function rememberMove(tile) {
+    $(tile).removeClass('flipback').addClass('flip');
+    $(tile).find('.game-tile__icon').addClass('visible');
+
     shown.push(tile);
   }
 
@@ -88,49 +87,42 @@ memory.router.route('memory/:difficulty', function(difficulty) {
       location.hash = '#memory/win';
     };
 
-    shown = [];
+    shown.shift();
+    shown.shift();
   }
 
   function flipBack(a, b) {
-    $(".game-counter__lives").find(".ion-heart-broken").last().remove();
-
-    $(a).add(b).removeClass('flip').addClass('flipback');
+    $(".game-counter__lives").find(".ion-heart").last().remove();
 
     ++ memory.errors;
 
     if($(".game-counter__lives").children().length === 0) {
-      location.hash = '#memory/lose';
+      setTimeout(function() {
+        location.hash = '#memory/lose';
+      }, 400);
     }
 
     setTimeout(function () {
-      $('.game-tile:not(.good)').find('input').prop('checked', false);
-      shown = [];
-    }, 500);
+      $(a).add(b).find('input').prop('checked', false);
+      $(a).add(b).find('.game-tile__icon').removeClass('visible');
+      $(a).add(b).removeClass('flip').addClass('flipback');
+    }, 1000);
+
+    shown.shift();
+    shown.shift();
   }
 
-  // if not is valid move, stop event and exit
-  // add move to array
-  // if we have two moves, compare them
-  //   if they are equal, mark them as good
-  //   if they are not equal, delay flip them
   $(".game-tile__card").on("click", function() {
 
-    // Add Icon to Shown if Checking
     var gameTile = $(this).closest('.game-tile');
 
-    if (!isValidMove(gameTile)){
+    if (!isValidMove(gameTile)) {
       return false;
     }
 
-    $(gameTile).removeClass('flipback').addClass('flip');
-
-    setTimeout(function() {
-      $(gameTile).find('.game-tile__icon').addClass('visible');
-    }, 250);
-
     rememberMove(gameTile);
 
-    if (shown.length === 2) {
+    if (shown.length >= 2) {
       if (tilesAreEqual(shown[0], shown[1])) {
         markTilesAsGood(shown[0], shown[1]);
       } else {

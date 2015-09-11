@@ -138,13 +138,13 @@ body {
 }
 
 .game-tile.flip {
-  -webkit-animation: flip-in-animation 0.5s linear;
-  animation: flip-in-animation 0.5s linear;
+  -webkit-animation: flip-in-animation 0.2s linear;
+  animation: flip-in-animation 0.2s linear;
 }
 
 .game-tile.flipback {
-  -webkit-animation: flip-out-animation 0.5s linear;
-  animation: flip-out-animation 0.5s linear;
+  -webkit-animation: flip-out-animation 0.2s linear;
+  animation: flip-out-animation 0.2s linear;
 }
 
     .game-tile--easy {
@@ -167,10 +167,10 @@ body {
       background: #C3D7DF;
       display: block;
       position: absolute;
-      top: 2px;
-      right: 2px;
-      bottom: 2px;
-      left: 2px;
+      top: 1px;
+      right: 1px;
+      bottom: 1px;
+      left: 1px;
       border-radius: 7px;
     }
 
@@ -183,7 +183,7 @@ body {
       transform: translate(-50%, -50%);
     }
 
-input:checked + .game-tile__card .game-tile__icon.visible {
+.visible {
   visibility: visible;
 }
 
@@ -304,8 +304,6 @@ input:checked + .game-tile__card .game-tile__icon.visible {
   transform: translate(-50%, -50%);
   text-align: center;
   float: left;
-  -webkit-animation: floating-middle-lose 1.5s ease-in-out infinite;
-  animation: floating-middle-lose 1.5s ease-in-out infinite;
   font-size: 20px;
   box-sizing: border-box;
   display: block;
