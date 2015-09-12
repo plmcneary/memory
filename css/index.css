@@ -64,6 +64,7 @@ body {
 }
 
 .game-link:hover {
+  background-color: #C2D7E0;
   color: #D75B37;
   border-color: #D75B37;
 }
@@ -315,6 +316,7 @@ body {
 }
 
 .new-game-link--lose:hover {
+  background-color: #C2D7E0;
   color: #D75B37;
   border-color: #D75B37;
 }
