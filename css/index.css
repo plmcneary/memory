@@ -64,9 +64,9 @@ body {
 }
 
 .game-link:hover {
-  background-color: #C2D7E0;
-  color: #D75B37;
-  border-color: #D75B37;
+  background-color: #F5F5F5;
+  color: #67727A;
+  border-color: #F5F5F5;
 }
 
 .game-link--easy {
@@ -139,13 +139,13 @@ body {
 }
 
 .game-tile__card.flip {
-  -webkit-animation: flip-in-animation 0.2s linear;
-  animation: flip-in-animation 0.2s linear;
+  -webkit-animation: flip-in 0.2s linear;
+  animation: flip-in 0.2s linear;
 }
 
 .game-tile__card.flipback {
-  -webkit-animation: flip-out-animation 0.2s linear;
-  animation: flip-out-animation 0.2s linear;
+  -webkit-animation: flip-out 0.2s linear;
+  animation: flip-out 0.2s linear;
 }
 
     .game-tile--easy {
@@ -278,20 +278,36 @@ body {
     font-style: italic;
   }
 
+  .you {
+    -webkit-animation: slide-right 0.5s linear;
+    animation: slide-right 0.5s linear;
+  }
+
+  .btl {
+    -webkit-animation: slide-left 1.5s linear;
+    animation: slide-left 1.5s linear;
+  }
+
   .lose-message__p {
     padding: 0.5em 0em;
     font-size: 14px;
+    -webkit-animation: grow-sub 1.2s linear;
+    animation: grow-sub 1.2s linear;
   }
 
-.BTL {
+.expl {
   font-size: 18px;
-  padding-top: 0.8em;
-  padding-bottom: 2em;
+  padding: 1em 0em 2em 0em;
+  -webkit-animation: rattle-expl 1s linear infinite,
+  grow-sub 3.4s linear;
+  animation: rattle-expl 1s linear infinite,
+  grow-sub 3.4s linear;
 }
 
 .new-game-link-container {
   position: relative;
   padding: 2em 0em;
+  perspective: 400px;
 }
 
 .new-game-link--lose {
@@ -313,10 +329,12 @@ body {
   margin-right: auto;
   text-decoration: none;
   color: #F5F5F5;
+  -webkit-animation: grow-link 5.4s linear;
+  animation: grow-link 5.4s linear;
 }
 
 .new-game-link--lose:hover {
-  background-color: #C2D7E0;
-  color: #D75B37;
-  border-color: #D75B37;
+  background-color: #F5F5F5;
+  color: #67727A;
+  border-color: #F5F5F5;
 }
